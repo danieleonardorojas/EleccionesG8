@@ -51,5 +51,14 @@ public class CtlCandidate {
         
     }
     
+    // Método eliminar
+    public ClsMessage candidateDelete(String candidateId){
+        
+        ClsMessage message = this.candidateModel.candidateDelete(candidateId);
+        
+        return message;
+        
+    }
+    
     
 }

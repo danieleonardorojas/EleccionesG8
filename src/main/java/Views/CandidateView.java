@@ -75,7 +75,7 @@ public class CandidateView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         candidateTable = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonCandidateDelete = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButtonBackMainView = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -197,7 +197,7 @@ public class CandidateView extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 204, 102));
-        jButton5.setText("Eliminar");
+        jButton5.setText("Actualizar");
         jButton5.setBorderPainted(false);
         jButton5.setFocusPainted(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -352,11 +352,16 @@ public class CandidateView extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Puede eliminar y actualizar registros");
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 102, 225));
-        jButton1.setText("Eliminar");
-        jButton1.setBorderPainted(false);
+        jButtonCandidateDelete.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonCandidateDelete.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButtonCandidateDelete.setForeground(new java.awt.Color(0, 102, 225));
+        jButtonCandidateDelete.setText("Eliminar");
+        jButtonCandidateDelete.setBorderPainted(false);
+        jButtonCandidateDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCandidateDeleteActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 204, 51));
         jButton2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
@@ -378,7 +383,7 @@ public class CandidateView extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jButton1)
+                                .addComponent(jButtonCandidateDelete)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
                             .addComponent(jLabel13))
@@ -394,7 +399,7 @@ public class CandidateView extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonCandidateDelete)
                     .addComponent(jButton2))
                 .addGap(69, 69, 69))
         );
@@ -664,6 +669,22 @@ public class CandidateView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoCorreoActionPerformed
 
+    private void jButtonCandidateDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCandidateDeleteActionPerformed
+        // Código
+        int candidateColumn = 0;
+        int candidateRow = this.candidateTable.getSelectedRow();
+        String candidateId = this.candidateTable.getValueAt(candidateRow, candidateColumn).toString();
+        
+        ClsMessage message = this.candidateControler.candidateDelete(candidateId);
+        
+        if (message.getType().equals(ClsMessage.OK)){
+            
+            CandidatesGetting();
+            
+        }
+        JOptionPane.showMessageDialog(rootPane, message.getText());
+    }//GEN-LAST:event_jButtonCandidateDeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -711,11 +732,11 @@ public class CandidateView extends javax.swing.JFrame {
     private javax.swing.JTable candidateTable;
     private javax.swing.JComboBox<String> comboCiudadOrigen;
     private javax.swing.JComboBox<String> comboPartido;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonBackMainView;
     private javax.swing.JButton jButtonCandidateAdd;
+    private javax.swing.JButton jButtonCandidateDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

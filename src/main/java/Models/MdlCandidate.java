@@ -108,5 +108,33 @@ public class MdlCandidate {
         }
 
     }
+    
+    
+    public ClsMessage candidateDelete(String candidateId){
+        
+        ClsMessage message;
+
+        try {
+
+            String candidateSQLAdd = "DELETE FROM tb_candidates WHERE id_candidate = ?";
+            PreparedStatement candidateSentence = this.candidateJdbc.connectDBElectionsG8.prepareStatement(candidateSQLAdd);
+            candidateSentence.setString(1, candidateId);
+
+            int candidateDeleteResult = candidateSentence.executeUpdate();
+
+            if (candidateDeleteResult >= 1) {
+                message = new ClsMessage(ClsMessage.OK, "Profile has been deleted");
+            } else {
+                message = new ClsMessage(ClsMessage.ERROR, "Profile has not been deleted");
+            }
+
+            return message;
+
+        } catch (Exception e) {
+            message = new ClsMessage(ClsMessage.WARNING, "Warning: " + e.getMessage());
+            return message;
+        }
+        
+    }
 
 }
