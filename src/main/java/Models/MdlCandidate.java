@@ -116,8 +116,8 @@ public class MdlCandidate {
 
         try {
 
-            String candidateSQLAdd = "DELETE FROM tb_candidates WHERE id_candidate = ?";
-            PreparedStatement candidateSentence = this.candidateJdbc.connectDBElectionsG8.prepareStatement(candidateSQLAdd);
+            String candidateSQLDelete = "DELETE FROM tb_candidates WHERE id_candidate = ?";
+            PreparedStatement candidateSentence = this.candidateJdbc.connectDBElectionsG8.prepareStatement(candidateSQLDelete);
             candidateSentence.setString(1, candidateId);
 
             int candidateDeleteResult = candidateSentence.executeUpdate();
@@ -134,6 +134,50 @@ public class MdlCandidate {
             message = new ClsMessage(ClsMessage.WARNING, "Warning: " + e.getMessage());
             return message;
         }
+        
+    }
+    
+    public ClsMessage CandidateUpdate(ClsCandidate candidateUpdate){
+        
+        ClsMessage message;
+        
+        try {
+            String candidateSQLUpdate = "UPDATE tb_candidates SET name = ?," +
+                    " phone = ?, mail = ?, party = ?, hometown = ?," +
+                    " description = ?, campaign_message = ?," +
+                    " proposals = ? WHERE id_candidate = ?";
+            PreparedStatement candidateSentenceUpdate = this.candidateJdbc.connectDBElectionsG8.prepareStatement(candidateSQLUpdate);
+            
+            candidateSentenceUpdate.setString(1, candidateUpdate.getName());
+            candidateSentenceUpdate.setLong(2, candidateUpdate.getPhone());
+            candidateSentenceUpdate.setString(3, candidateUpdate.getMail());
+            candidateSentenceUpdate.setString(4, candidateUpdate.getParty());
+            candidateSentenceUpdate.setString(5, candidateUpdate.getHometown());
+            candidateSentenceUpdate.setString(6, candidateUpdate.getDescription());
+            candidateSentenceUpdate.setString(7, candidateUpdate.getCampaign_message());
+            candidateSentenceUpdate.setString(8, candidateUpdate.getProposals());
+            candidateSentenceUpdate.setString(9, candidateUpdate.getDocumentNumber());
+            
+            
+           
+            int candidateUpResult = candidateSentenceUpdate.executeUpdate();
+
+            if (candidateUpResult >= 1) {
+
+                message = new ClsMessage(ClsMessage.OK, "Profile has been updated");
+                return message;
+            }
+
+            message = new ClsMessage(ClsMessage.ERROR, "Profile has not been updated");
+            return message;
+
+        } catch (Exception e) {
+
+            message = new ClsMessage(ClsMessage.ERROR, "Warning: " + e.getMessage());
+            return message;
+        }
+
+        
         
     }
 

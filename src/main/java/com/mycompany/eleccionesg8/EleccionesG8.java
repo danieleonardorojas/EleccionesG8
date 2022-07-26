@@ -1,6 +1,7 @@
 package com.mycompany.eleccionesg8;
 
 import Clases.ClsJdbc;
+import Views.MainView;
 
 /**
  *
@@ -21,5 +22,8 @@ public class EleccionesG8 {
         // Llamamos método
         jdbc.candidateConnectig();
         
+        MainView menuLocation = new MainView();
+        menuLocation.setLocationRelativeTo(null);
+        menuLocation.setVisible(true);
     }
 }

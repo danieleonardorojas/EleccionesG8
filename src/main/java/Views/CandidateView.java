@@ -22,6 +22,9 @@ public class CandidateView extends javax.swing.JFrame {
     
     // Resultados
     LinkedList<ClsCandidate> candidateListObj = new LinkedList<>();
+    
+    // Manipular
+    LinkedList<ClsCandidate> candidateGetList;
 
     /**
      * Creates new form CandidateView
@@ -31,6 +34,9 @@ public class CandidateView extends javax.swing.JFrame {
         // Instanciar
         this.ObjMainMenu = mainMenu;
         this.candidateControler = new CtlCandidate();
+        
+        this.jButtonCandidateNew.setVisible(false);
+        this.jButtonCandidateUpdate.setVisible(false);
         
         // Llamar método para obtención datos
         this.GetJTb_candidate();
@@ -68,15 +74,16 @@ public class CandidateView extends javax.swing.JFrame {
         campoPropuestas = new javax.swing.JTextField();
         comboCiudadOrigen = new javax.swing.JComboBox<>();
         comboPartido = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
+        jButtonCandidateUpdate = new javax.swing.JButton();
         jButtonCandidateAdd = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        jButtonCandidateNew = new javax.swing.JButton();
+        jPanel5CandidatePaneList = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane = new javax.swing.JScrollPane();
         candidateTable = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jButtonCandidateDelete = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonCandidateEdit = new javax.swing.JButton();
         jButtonBackMainView = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -84,14 +91,14 @@ public class CandidateView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(408, 308));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Gestor Candidato");
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
         candidateForm.setBackground(new java.awt.Color(255, 255, 255));
         candidateForm.setForeground(new java.awt.Color(0, 102, 255));
@@ -194,19 +201,19 @@ public class CandidateView extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 204, 102));
-        jButton5.setText("Actualizar");
-        jButton5.setBorderPainted(false);
-        jButton5.setFocusPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCandidateUpdate.setBackground(new java.awt.Color(0, 204, 51));
+        jButtonCandidateUpdate.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButtonCandidateUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCandidateUpdate.setText("Actualizar");
+        jButtonCandidateUpdate.setBorderPainted(false);
+        jButtonCandidateUpdate.setFocusPainted(false);
+        jButtonCandidateUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonCandidateUpdateActionPerformed(evt);
             }
         });
 
-        jButtonCandidateAdd.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonCandidateAdd.setBackground(new java.awt.Color(204, 204, 204));
         jButtonCandidateAdd.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jButtonCandidateAdd.setForeground(new java.awt.Color(0, 102, 255));
         jButtonCandidateAdd.setText("Agregar");
@@ -219,19 +226,31 @@ public class CandidateView extends javax.swing.JFrame {
             }
         });
 
+        jButtonCandidateNew.setBackground(new java.awt.Color(0, 102, 204));
+        jButtonCandidateNew.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButtonCandidateNew.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCandidateNew.setText("Nuevo");
+        jButtonCandidateNew.setBorderPainted(false);
+        jButtonCandidateNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCandidateNewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jButtonCandidateAdd)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButtonCandidateAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCandidateNew)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCandidateUpdate)
+                        .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(campoPropuestas)
                         .addContainerGap())
@@ -318,13 +337,14 @@ public class CandidateView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCandidateAdd)
-                    .addComponent(jButton5))
+                    .addComponent(jButtonCandidateUpdate)
+                    .addComponent(jButtonCandidateNew))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         candidateForm.addTab("Formulario", jPanel3);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5CandidatePaneList.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -343,18 +363,18 @@ public class CandidateView extends javax.swing.JFrame {
         candidateTable.setShowGrid(true);
         candidateTable.setShowHorizontalLines(false);
         candidateTable.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(candidateTable);
+        jScrollPane.setViewportView(candidateTable);
 
-        jScrollPane2.setViewportView(jScrollPane1);
+        jScrollPane2.setViewportView(jScrollPane);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 102, 204));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Puede eliminar y actualizar registros");
 
-        jButtonCandidateDelete.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonCandidateDelete.setBackground(new java.awt.Color(255, 204, 0));
         jButtonCandidateDelete.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButtonCandidateDelete.setForeground(new java.awt.Color(0, 102, 225));
+        jButtonCandidateDelete.setForeground(new java.awt.Color(255, 0, 0));
         jButtonCandidateDelete.setText("Eliminar");
         jButtonCandidateDelete.setBorderPainted(false);
         jButtonCandidateDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -363,48 +383,52 @@ public class CandidateView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 51));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Actualizar");
-        jButton2.setBorderPainted(false);
+        jButtonCandidateEdit.setBackground(new java.awt.Color(0, 204, 51));
+        jButtonCandidateEdit.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButtonCandidateEdit.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCandidateEdit.setText("Editar");
+        jButtonCandidateEdit.setBorderPainted(false);
+        jButtonCandidateEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCandidateEditActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel5CandidatePaneListLayout = new javax.swing.GroupLayout(jPanel5CandidatePaneList);
+        jPanel5CandidatePaneList.setLayout(jPanel5CandidatePaneListLayout);
+        jPanel5CandidatePaneListLayout.setHorizontalGroup(
+            jPanel5CandidatePaneListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5CandidatePaneListLayout.createSequentialGroup()
+                .addGroup(jPanel5CandidatePaneListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5CandidatePaneListLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(jPanel5CandidatePaneListLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jButtonCandidateDelete)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jLabel13))
-                        .addGap(0, 48, Short.MAX_VALUE)))
+                        .addComponent(jLabel13)
+                        .addGap(0, 48, Short.MAX_VALUE))
+                    .addGroup(jPanel5CandidatePaneListLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonCandidateDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCandidateEdit)))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        jPanel5CandidatePaneListLayout.setVerticalGroup(
+            jPanel5CandidatePaneListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5CandidatePaneListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5CandidatePaneListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCandidateDelete)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonCandidateEdit))
                 .addGap(69, 69, 69))
         );
 
-        candidateForm.addTab("Lista", jPanel5);
+        candidateForm.addTab("Lista", jPanel5CandidatePaneList);
 
         jButtonBackMainView.setBackground(new java.awt.Color(255, 204, 0));
         jButtonBackMainView.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
@@ -443,12 +467,12 @@ public class CandidateView extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Versión 1.0");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Espacio para agregar candidato");
 
@@ -502,7 +526,7 @@ public class CandidateView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCandidateAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCandidateAddActionPerformed
-        // TODO add your handling code here:
+        // BUTTON: ADD
 
         // Exepciones
         /**try {*/
@@ -570,7 +594,8 @@ public class CandidateView extends javax.swing.JFrame {
     // 1 M - Crear función que llama e indica al controlador que el modelo entregue datos y asigna a lista
     public void GetJTb_candidate(){
         
-        LinkedList<ClsCandidate> candidateGetList = this.candidateControler.GetJTb_candidate();
+        //LinkedList<ClsCandidate> candidateGetList = this.candidateControler.GetJTb_candidate();
+        this.candidateGetList = this.candidateControler.GetJTb_candidate();
         // Actualiza
         this.UpdateJtb_candidate(candidateGetList);
         
@@ -623,12 +648,32 @@ public class CandidateView extends javax.swing.JFrame {
     */
 
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jButtonCandidateUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCandidateUpdateActionPerformed
+        // BUTTON: UPDATE
+        
+        String documentNumber = this.campoCedula.getText();
+        String name = this.campoNombre.getText();
+        long phone = Long.parseLong(this.campoTelefono.getText());
+        String mail = this.campoCorreo.getText();
+        String party = this.comboPartido.getSelectedItem().toString();
+        String hometown = this.comboCiudadOrigen.getSelectedItem().toString();
+        String description = this.campoDescripcion.getText();
+        String campaign_message = this.campoMensajeCampania.getText();
+        String proposals = this.campoPropuestas.getText();
+
+        ClsCandidate candidateUpdate = new ClsCandidate(documentNumber, name, phone, mail, party, hometown, description, campaign_message, proposals);
+        
+        ClsMessage message = this.candidateControler.CandidateUpdate(candidateUpdate);
+
+        if (message.getType().equals(ClsMessage.OK)) {
+            GetJTb_candidate();
+        }
+
+        JOptionPane.showMessageDialog(rootPane, message.getText());
+    }//GEN-LAST:event_jButtonCandidateUpdateActionPerformed
 
     private void jButtonBackMainViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackMainViewActionPerformed
-        // TODO add your handling code here:
+        // BUTTON: BACK
         this.setVisible(false);
         this.ObjMainMenu.setVisible(true);
     }//GEN-LAST:event_jButtonBackMainViewActionPerformed
@@ -670,7 +715,7 @@ public class CandidateView extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCorreoActionPerformed
 
     private void jButtonCandidateDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCandidateDeleteActionPerformed
-        // Código
+        // BUTTON: DELETE
         int candidateColumn = 0;
         int candidateRow = this.candidateTable.getSelectedRow();
         String candidateId = this.candidateTable.getValueAt(candidateRow, candidateColumn).toString();
@@ -685,6 +730,77 @@ public class CandidateView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, message.getText());
     }//GEN-LAST:event_jButtonCandidateDeleteActionPerformed
 
+    private void jButtonCandidateEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCandidateEditActionPerformed
+        // BUTTON: EDIT 
+        this.candidateForm.setSelectedIndex(0);
+        
+        int candidateColumn = 0;
+        int candidateRow = this.candidateTable.getSelectedRow();
+        String candidateId = this.candidateTable.getValueAt(candidateRow, candidateColumn).toString();
+        
+        ClsCandidate candidateSearchEdit = this.CandidateSearch(candidateId);
+        
+        if (candidateSearchEdit != null){
+            
+            this.campoCedula.setEnabled(false);
+            this.jButtonCandidateAdd.setVisible(false);
+            
+            this.jButtonCandidateUpdate.setVisible(true);
+            this.jButtonCandidateNew.setVisible(true);
+            
+            this.campoCedula.setText(candidateSearchEdit.getDocumentNumber());
+            this.campoNombre.setText(candidateSearchEdit.getName());
+            this.campoTelefono.setText(String.valueOf(candidateSearchEdit.getPhone()));
+            this.campoCorreo.setText(candidateSearchEdit.getMail());
+            this.comboCiudadOrigen.setSelectedItem(candidateSearchEdit.getHometown());
+            this.comboPartido.setSelectedItem(candidateSearchEdit.getParty());
+            this.campoDescripcion.setText(candidateSearchEdit.getDescription());
+            this.campoMensajeCampania.setText(candidateSearchEdit.getCampaign_message());
+            this.campoPropuestas.setText(candidateSearchEdit.getProposals());
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButtonCandidateEditActionPerformed
+
+    private void jButtonCandidateNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCandidateNewActionPerformed
+        // BUTTON: NEW
+        this.jButtonCandidateAdd.setVisible(true);
+        this.jButtonCandidateUpdate.setVisible(false);
+        this.jButtonCandidateNew.setVisible(false);
+        
+        this.campoCedula.setEnabled(true);
+        
+        this.campoCedula.setText("");
+        this.campoNombre.setText("");
+        this.campoTelefono.setText("");
+        this.campoCorreo.setText("");
+        this.comboCiudadOrigen.setSelectedItem("");
+        this.comboPartido.setSelectedItem("");
+        this.campoDescripcion.setText("");
+        this.campoMensajeCampania.setText("");
+        this.campoPropuestas.setText("");
+        
+        
+        
+    }//GEN-LAST:event_jButtonCandidateNewActionPerformed
+
+    public ClsCandidate CandidateSearch(String candidateId){
+        
+        for (ClsCandidate candidateSearch : this.candidateGetList) {
+            
+            if(candidateId.equals(candidateSearch.getDocumentNumber())){
+                
+                return candidateSearch;
+                
+            }
+            
+        }
+        
+        return null;
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -732,11 +848,12 @@ public class CandidateView extends javax.swing.JFrame {
     private javax.swing.JTable candidateTable;
     private javax.swing.JComboBox<String> comboCiudadOrigen;
     private javax.swing.JComboBox<String> comboPartido;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonBackMainView;
     private javax.swing.JButton jButtonCandidateAdd;
     private javax.swing.JButton jButtonCandidateDelete;
+    private javax.swing.JButton jButtonCandidateEdit;
+    private javax.swing.JButton jButtonCandidateNew;
+    private javax.swing.JButton jButtonCandidateUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -753,8 +870,8 @@ public class CandidateView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel5CandidatePaneList;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

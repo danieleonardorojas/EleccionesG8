@@ -60,5 +60,13 @@ public class CtlCandidate {
         
     }
     
+    // Método actualizar
+    public ClsMessage CandidateUpdate(ClsCandidate candidateUpdate) {
+
+        ClsMessage message = this.candidateModel.CandidateUpdate(candidateUpdate);
+
+        return message;
+    }
+    
     
 }
