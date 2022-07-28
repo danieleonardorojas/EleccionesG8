@@ -20,7 +20,7 @@ public class EleccionesG8 {
         ClsJdbc jdbc = new ClsJdbc();
         
         // Llamamos método
-        jdbc.candidateConnectig();
+        jdbc.electionConnectig();
         
         MainView menuLocation = new MainView();
         menuLocation.setLocationRelativeTo(null);

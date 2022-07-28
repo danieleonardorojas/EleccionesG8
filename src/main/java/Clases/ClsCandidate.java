@@ -15,7 +15,7 @@ public class ClsCandidate extends ClsPerson {
     // Constructor - Referencias
 
     public ClsCandidate(String documentNumber, String name, Long phone, String mail, String party, String hometown, String description, String campaign_message, String proposals) {
-        super(documentNumber, name, phone, mail);
+        super(documentNumber, name, phone, mail, party, hometown);
         this.party = party;
         this.hometown = hometown;
         this.description = description;

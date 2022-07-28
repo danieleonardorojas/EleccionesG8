@@ -41,7 +41,7 @@ public class MainView extends javax.swing.JFrame {
         jButtonCandidateManagement = new javax.swing.JButton();
         jButtonVoterManagement = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonElectionsManagement = new javax.swing.JButton();
 
         jButton3.setText("jButton3");
 
@@ -97,15 +97,15 @@ public class MainView extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Elecciones para votación online en Colombia");
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 0));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Gestor elecciones");
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonElectionsManagement.setBackground(new java.awt.Color(255, 204, 0));
+        jButtonElectionsManagement.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonElectionsManagement.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonElectionsManagement.setText("Gestor elecciones");
+        jButtonElectionsManagement.setBorderPainted(false);
+        jButtonElectionsManagement.setFocusPainted(false);
+        jButtonElectionsManagement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonElectionsManagementActionPerformed(evt);
             }
         });
 
@@ -127,7 +127,7 @@ public class MainView extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonElectionsManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(131, 131, 131)
                                 .addComponent(jButton4)))
@@ -144,7 +144,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jButtonCandidateManagement)
                     .addComponent(jButtonVoterManagement))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButtonElectionsManagement)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -205,9 +205,10 @@ public class MainView extends javax.swing.JFrame {
         this.ObjVoterView.setVisible(true);
     }//GEN-LAST:event_jButtonVoterManagementActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonElectionsManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElectionsManagementActionPerformed
+        // BUTTON: ELECTION MANAGEMENT
+        
+    }//GEN-LAST:event_jButtonElectionsManagementActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,10 +247,10 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonCandidateManagement;
+    private javax.swing.JButton jButtonElectionsManagement;
     private javax.swing.JButton jButtonVoterManagement;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

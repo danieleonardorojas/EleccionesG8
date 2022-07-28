@@ -18,7 +18,7 @@ public class ClsJdbc {
     public Connection connectDBElectionsG8;
     
     // Método / función
-    public void candidateConnectig(){
+    public void electionConnectig(){
         
         try{
             

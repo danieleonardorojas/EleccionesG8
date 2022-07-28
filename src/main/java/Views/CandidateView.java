@@ -551,6 +551,7 @@ public class CandidateView extends javax.swing.JFrame {
             } else {*/
 
                 // Crear objeto de tipo ClsCandidate / Enviar parámetros
+                
             ClsCandidate candidateObj = new ClsCandidate(documentNumber, name, phone, mail, party, hometown, description, campaign_message, proposals);
 
                 // Llamar controlador / respuesta es para si se puede o no agregar
@@ -776,8 +777,8 @@ public class CandidateView extends javax.swing.JFrame {
         this.campoNombre.setText("");
         this.campoTelefono.setText("");
         this.campoCorreo.setText("");
-        this.comboCiudadOrigen.setSelectedItem("");
-        this.comboPartido.setSelectedItem("");
+        this.comboCiudadOrigen.setSelectedItem(null);
+        this.comboPartido.setSelectedItem(null);
         this.campoDescripcion.setText("");
         this.campoMensajeCampania.setText("");
         this.campoPropuestas.setText("");

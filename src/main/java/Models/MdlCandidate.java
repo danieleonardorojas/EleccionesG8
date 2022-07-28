@@ -22,7 +22,7 @@ public class MdlCandidate {
         // Definir objeto
         this.candidateJdbc = new ClsJdbc();
         // Crear conexión
-        this.candidateJdbc.candidateConnectig();
+        this.candidateJdbc.electionConnectig();
 
     }
 
