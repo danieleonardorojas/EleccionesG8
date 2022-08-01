@@ -10,6 +10,8 @@ public class MainView extends javax.swing.JFrame {
     CandidateView ObjCandidateView;
     
     VoterView ObjVoterView;
+    
+    ElectionsView ObjElectionView;
     /**
      * Creates new form ViewMain
      */
@@ -21,6 +23,10 @@ public class MainView extends javax.swing.JFrame {
         
         // Intanciar / Inicializar Objeto
         this.ObjVoterView = new VoterView(this);
+        
+        // Intanciar / Inicializar Objeto
+        this.ObjElectionView = new ElectionsView(this);
+                
     }
 
     /**
@@ -207,7 +213,10 @@ public class MainView extends javax.swing.JFrame {
 
     private void jButtonElectionsManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElectionsManagementActionPerformed
         // BUTTON: ELECTION MANAGEMENT
-        
+        // Ocultamos ventana MainView
+        this.setVisible(false);
+        // Método
+        this.ObjElectionView.setVisible(true);
     }//GEN-LAST:event_jButtonElectionsManagementActionPerformed
 
     /**
